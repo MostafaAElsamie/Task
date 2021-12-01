@@ -1,0 +1,58 @@
+
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand text-white">PaySky Transaction</a>
+  <button class="btn btn-danger my-2 my-sm-0" (click)="onLogout()">Logout</button>
+</nav>
+<div class="wrapper">
+  <div class="wrapped-div">
+    <form #form='ngForm' class="mb-4" autocomplete="off" (submit)="onSubmit(form)">
+      <div class="form-group">
+        <label>Processing Code</label>
+        <input class="form-control" #UserName="ngModel" name="ProcessingCode" [(ngModel)]="transaction.ProcessingCode" required>
+      </div>
+      <div class="form-group">
+        <label>System Transactionce Number</label>
+        <input  class="form-control" #Password="ngModel" name="SystemTraceNr" [(ngModel)]="transaction.SystemTraceNr" required>
+      </div>
+      <div class="form-group">
+        <label>Function Code</label>
+        <input  class="form-control" #Password="ngModel" name="FunctionCode" [(ngModel)]="transaction.FunctionCode" required>
+      </div>
+      <div class="form-group">
+        <label>Card No</label>
+        <input  class="form-control" #Password="ngModel" name="CardNo" [(ngModel)]="transaction.CardNo" required>
+      </div>
+      <div class="form-group">
+        <label>Card Holder </label>
+        <input  class="form-control" #Password="ngModel" name="CardHolder" [(ngModel)]="transaction.CardHolder" required>
+      </div>
+      <div class="form-group">
+        <label>Amount Transaction</label>
+        <input  class="form-control" #Password="ngModel" name="AmountTrxn" [(ngModel)]="transaction.AmountTrxn" required>
+      </div>
+      <div class="form-group">
+        <label>Currency Code</label>
+        <input  class="form-control" #Password="ngModel" name="CurrencyCode" [(ngModel)]="transaction.CurrencyCode" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-8 offset-md-2">
+          <button type="submit" class="btn btn-lg btn-block" [disabled]="form.invalid">Submit</button>
+        </div>
+      </div>
+      <div class="card m-5" style="width:18rem" *ngIf="transactionResponse">
+        <ul class="list-group">
+          <li class="list-group-item"><strong>ResponseCode : </strong>{{transactionResponse.responseCode }}</li>
+          <li class="list-group-item"><strong>Message : </strong>{{transactionResponse.message }}</li>
+          <li class="list-group-item"><strong>ApprovalCode : </strong>{{transactionResponse.approvalCode }}</li>
+          <li class="list-group-item"><strong>DateTime : </strong>{{transactionResponse.dateTime }}</li>
+          
+        </ul>
+      </div>
+    </form>
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
